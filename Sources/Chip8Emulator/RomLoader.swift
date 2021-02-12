@@ -8,7 +8,7 @@
 import Foundation
 
 public struct RomLoader {
-    static func loadRam(from rom: [Byte]) -> [Byte] {
+    public static func loadRam(from rom: [Byte]) -> [Byte] {
         var ram = [Byte](repeating: 0, count: 4096)
 
         let font = Font.bytes
