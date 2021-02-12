@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Size {
+public struct Size {
     public let width: Int
     public let height: Int
     public var area: Int {
