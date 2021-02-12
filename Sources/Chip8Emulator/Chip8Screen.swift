@@ -15,5 +15,5 @@ public struct Chip8Screen {
     public static let width = 64
     public static let height = 32
     public let size = Size(width: Chip8Screen.width, height: Chip8Screen.height)
-    var pixels: [Byte]
+    public var pixels: [Byte]
 }
