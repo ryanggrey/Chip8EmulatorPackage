@@ -8,9 +8,9 @@
 import Foundation
 
 struct Size {
-    let width: Int
-    let height: Int
-    var area: Int {
+    public let width: Int
+    public let height: Int
+    public var area: Int {
         return width * height
     }
 }
