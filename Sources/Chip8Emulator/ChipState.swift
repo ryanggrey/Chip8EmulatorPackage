@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChipState {
+public struct ChipState {
     // 4K memory
     public var ram = [Byte](repeating: 0, count: 4096)
     // 16 variables
