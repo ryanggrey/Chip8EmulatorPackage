@@ -13,7 +13,7 @@ public class Chip8 {
     private var state: ChipState
     private let opExecutor: OpExecutor
 
-    init(
+    public init(
         state: ChipState,
         cpuHz: TimeInterval
     ) {
