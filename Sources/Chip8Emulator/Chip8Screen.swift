@@ -8,8 +8,12 @@
 import Foundation
 
 public struct Chip8Screen {
-    private static let width = 64
-    private static let height = 32
+    public init(pixels: [Byte] = [Byte](repeating: 0, count: Chip8Screen.width * Chip8Screen.height)) {
+        self.pixels = pixels
+    }
+
+    public static let width = 64
+    public static let height = 32
     let size = Size(width: Chip8Screen.width, height: Chip8Screen.height)
-    var pixels = [Byte](repeating: 0, count: Chip8Screen.width * Chip8Screen.height)
+    var pixels: [Byte]
 }
