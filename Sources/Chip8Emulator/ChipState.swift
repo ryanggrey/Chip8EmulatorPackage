@@ -8,30 +8,54 @@
 import Foundation
 
 public struct ChipState {
-    // 4K memory
-    public var ram = [Byte](repeating: 0, count: 4096)
-    // 16 variables
-    public var v = [Byte](repeating: 0, count: 16)
-    public var i: Word = 0
-    // Roms loaded into 0x200. Memory prior to this is reserved (for font etc)
-    public var pc: Word = 0x200
-    public var screen = Chip8Screen()
-    public var delayTimer: TimeInterval = 0
-    public var soundTimer: TimeInterval = 0
-    // 12 or 16 sized stack in real Chip-8, but allow this to grow dynamically
+    public init(
+        // 4K memory
+        ram: [Byte] = [Byte](repeating: 0, count: 4096),
+        // 16 variables
+        v: [Byte] = [Byte](repeating: 0, count: 16),
+        i: Word = 0,
+        // Roms loaded into 0x200. Memory prior to this is reserved (for font etc)
+        pc: Word = 0x200,
+        screen: Chip8Screen = Chip8Screen(),
+        delayTimer: TimeInterval = 0,
+        soundTimer: TimeInterval = 0,
+        // 12 or 16 sized stack in real Chip-8, but allow this to grow dynamically
+        stack: [Word] = [Word](),
+        downKeys: NSMutableOrderedSet = NSMutableOrderedSet(),
+        isAwaitingKey: Bool = false,
+        needsRedraw: Bool = false) {
+        self.ram = ram
+        self.v = v
+        self.i = i
+        self.pc = pc
+        self.screen = screen
+        self.delayTimer = delayTimer
+        self.soundTimer = soundTimer
+        self.stack = stack
+        self.downKeys = downKeys
+        self.isAwaitingKey = isAwaitingKey
+        self.needsRedraw = needsRedraw
+    }
+    
+    public var ram: [Byte]
+    public var v: [Byte]
+    public var i: Word
+    public var pc: Word
+    public var screen: Chip8Screen
+    public var delayTimer: TimeInterval
+    public var soundTimer: TimeInterval
     public var stack = [Word]()
     // stack of currently pressed keys
     // last pressed key at top of stack
     // first pressed key on bottom of stak
-    public var downKeys = NSMutableOrderedSet()
-
-    public var isAwaitingKey = false
-    public var needsRedraw = false
-
+    public var downKeys: NSMutableOrderedSet
+    public var isAwaitingKey: Bool
+    public var needsRedraw: Bool
+    
     public var shouldPlaySound: Bool {
         return soundTimer > 0
     }
-
+    
     public var currentOp: Word {
         let byte1 = ram[pc]
         let byte2 = ram[pc + 1]
