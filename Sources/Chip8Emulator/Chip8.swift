@@ -38,15 +38,15 @@ public class Chip8 {
         return state.screen
     }
 
-    func cycle() {
+    public func cycle() {
         self.state = try! opExecutor.handle(state: self.state, op: state.currentOp)
     }
 
-    func handleKeyDown(key: Int) {
+    public func handleKeyDown(key: Int) {
         state.downKeys.add(Byte(key))
     }
 
-    func handleKeyUp(key: Int) {
+    public func handleKeyUp(key: Int) {
         state.downKeys.remove(Byte(key))
     }
 }
