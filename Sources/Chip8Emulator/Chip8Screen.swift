@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Chip8Screen {
+public struct Chip8Screen {
     private static let width = 64
     private static let height = 32
     let size = Size(width: Chip8Screen.width, height: Chip8Screen.height)

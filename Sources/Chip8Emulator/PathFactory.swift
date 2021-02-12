@@ -8,8 +8,8 @@
 import Foundation
 import CoreGraphics
 
-struct PathFactory {
-    static func from(screen: Chip8Screen, containerSize: CGSize) -> CGPath {
+public struct PathFactory {
+    public static func from(screen: Chip8Screen, containerSize: CGSize) -> CGPath {
         let path = CGMutablePath()
 
         let viewWidth = containerSize.width
