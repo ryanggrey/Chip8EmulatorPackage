@@ -9,7 +9,11 @@ import Foundation
 import CoreGraphics
 
 public struct PathFactory {
-    public static func from(screen: Chip8Screen, containerSize: CGSize) -> CGPath {
+    public static func from(
+        screen: Chip8Screen,
+        containerSize: CGSize,
+        isYReversed: Bool
+    ) -> CGPath {
         let path = CGMutablePath()
 
         let viewWidth = containerSize.width
@@ -29,7 +33,9 @@ public struct PathFactory {
                 }
 
                 let xCoord = CGFloat(x) * pixelSize.width
-                let yCoord = viewHeight - (CGFloat(y) * pixelSize.height)
+                let yCoord = isYReversed
+                    ? viewHeight - (CGFloat(y) * pixelSize.height)
+                    : CGFloat(y) * pixelSize.height
                 let origin = CGPoint(x: xCoord, y: yCoord)
                 let frame = CGRect(origin: origin, size: pixelSize)
                 path.addRect(frame)
