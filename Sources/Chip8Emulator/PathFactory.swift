@@ -22,6 +22,11 @@ public struct PathFactory {
         let pixelHeight = (viewHeight / CGFloat(screen.size.height)).floorTo(nearest: 0.5)
         let pixelSize = CGSize(width: pixelWidth, height: pixelHeight)
 
+        let xRemainder = viewWidth - (pixelWidth * CGFloat(screen.size.width))
+        let yRemainder = viewHeight - (pixelHeight * CGFloat(screen.size.height))
+        let xStart = (xRemainder / 2).floorTo(nearest: 0.5)
+        let yStart = (yRemainder / 2).floorTo(nearest: 0.5)
+
         let xRange = 0..<screen.size.width
         let yRange = 0..<screen.size.height
         for x in xRange {
@@ -32,10 +37,11 @@ public struct PathFactory {
                     continue
                 }
 
-                let xCoord = CGFloat(x) * pixelSize.width
+                let xCoord = xStart + (CGFloat(x) * pixelSize.width)
+                let rawYCoord = yStart + (CGFloat(y) * pixelSize.height)
                 let yCoord = isYReversed
-                    ? viewHeight - (CGFloat(y) * pixelSize.height)
-                    : CGFloat(y) * pixelSize.height
+                    ? viewHeight - rawYCoord
+                    : rawYCoord
                 let origin = CGPoint(x: xCoord, y: yCoord)
                 let frame = CGRect(origin: origin, size: pixelSize)
                 path.addRect(frame)
