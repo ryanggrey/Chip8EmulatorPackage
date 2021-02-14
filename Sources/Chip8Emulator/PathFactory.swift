@@ -18,8 +18,8 @@ public struct PathFactory {
 
         let viewWidth = containerSize.width
         let viewHeight = containerSize.height
-        let pixelWidth = round(viewWidth / CGFloat(screen.size.width))
-        let pixelHeight = round(viewHeight / CGFloat(screen.size.height))
+        let pixelWidth = (viewWidth / CGFloat(screen.size.width)).floorTo(nearest: 0.5)
+        let pixelHeight = (viewHeight / CGFloat(screen.size.height)).floorTo(nearest: 0.5)
         let pixelSize = CGSize(width: pixelWidth, height: pixelHeight)
 
         let xRange = 0..<screen.size.width
@@ -42,5 +42,14 @@ public struct PathFactory {
             }
         }
         return path
+    }
+}
+
+extension CGFloat {
+    func floorTo(nearest decimal: CGFloat) -> CGFloat {
+        let modified = self / decimal
+        let floored = floor(modified)
+        let final = floored * decimal
+        return final
     }
 }
