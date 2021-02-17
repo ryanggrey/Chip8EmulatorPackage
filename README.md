@@ -1,6 +1,6 @@
 # Chip 8 Emulator Swift Package
 
-A Chip-8 emulator Swift package.
+A Chip-8 emulator Swift package. For use in macOS, iOS, watchOS and tvOS projects.
 
 This package implements the core functionality of a Chip-8 emulator in Swift. It contains no platform UI elements and this is left to a consumer projects to implement.
 
