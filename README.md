@@ -10,11 +10,12 @@ The emulator package is designed to be driven by the consuming platform applicat
 2. Decide how to render the `pixels` to the platform's display.
 3. Detect user inputs and map them to [chip-8 keys](https://en.wikipedia.org/wiki/CHIP-8#Input) (`Chip8KeyCode`), including key down and up events.
 
-Not a lot of thought has went into this design which has so far been influenced purely by reducing duplication between the [chip-8-macOS](https://github.com/ryanggrey/chip-8-macos) and [chip-8-watchOS](https://github.com/ryanggrey/chip-8-watchOS) projects.
+Not a lot of thought has went into this design which has so far been influenced purely by reducing duplication between the consumer projects.
 
 ## Consumer Projects
 - [chip-8-macOS](https://github.com/ryanggrey/chip-8-macos)
 - [chip-8-watchOS](https://github.com/ryanggrey/chip-8-watchOS)
+- [chip-8-tvOS](https://github.com/ryanggrey/chip-8-tvOS)
 
 ## References
 I made heavy use of the following resources when working on this project:
