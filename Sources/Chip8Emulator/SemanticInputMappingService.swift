@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct SemanticInputMappingService {
-    private static let mapping: [RomName : SemanticInputMapping] = [
+public struct SemanticInputMappingService: InputMappingService {
+    private let mapping: [RomName : SemanticInputMapping] = [
         .chip8 : .none,
         .airplane : .airplane,
         .astroDodge: .astroDodge,
@@ -25,7 +25,7 @@ public struct SemanticInputMappingService {
         .wipeOff : .wipeOff
     ]
 
-    public static func mapping(for romName: RomName) -> SemanticInputMapping? {
+    public func mapping(for romName: RomName) -> SemanticInputMapping? {
         return mapping[romName]
     }
 }
