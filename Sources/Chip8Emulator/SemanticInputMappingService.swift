@@ -25,6 +25,8 @@ public struct SemanticInputMappingService: InputMappingService {
         .wipeOff : .wipeOff
     ]
 
+    public init() {}
+
     public func mapping(for romName: RomName) -> SemanticInputMapping? {
         return mapping[romName]
     }
