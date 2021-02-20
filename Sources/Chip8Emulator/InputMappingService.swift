@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import Chip8Emulator
 
 public protocol InputMappingService {
-    associatedtype Mapping
-    func mapping(for romName: RomName) -> Mapping?
+    associatedtype InputType: Hashable
+    associatedtype OutputType
+    func mapping(for romName: RomName) -> Dictionary<InputType, OutputType>?
 }
