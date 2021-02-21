@@ -26,7 +26,9 @@ public struct RomLoader {
     }
 
     private static func url(from romName: RomName) -> URL? {
-        return Bundle.module.url(forResource: romName.rawValue, withExtension: ".ch8")
+        let moduleBundle = Bundle.module
+        let url = moduleBundle.url(forResource: romName.rawValue, withExtension: ".ch8")
+        return url
     }
 
     public static func loadRam(from rom: [Byte]) -> [Byte] {
