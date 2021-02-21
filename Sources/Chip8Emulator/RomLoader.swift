@@ -8,6 +8,24 @@
 import Foundation
 
 public struct RomLoader {
+    public static func loadRam(from romName: RomName) -> [Byte] {
+        guard let url = Bundle.module.url(forResource: romName.rawValue, withExtension: ".ch8")
+        else {
+            print("Rom not found: " + romName.rawValue)
+            return []
+        }
+
+        do {
+            let romData = try Data(contentsOf: url)
+            let rom = [Byte](romData)
+            return loadRam(from: rom)
+        } catch {
+            // contents could not be loaded
+            print("Rom not found: " + url.absoluteString)
+            return []
+        }
+    }
+
     public static func loadRam(from rom: [Byte]) -> [Byte] {
         var ram = [Byte](repeating: 0, count: 4096)
 
