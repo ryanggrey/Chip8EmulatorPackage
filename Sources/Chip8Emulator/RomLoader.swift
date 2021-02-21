@@ -9,8 +9,7 @@ import Foundation
 
 public struct RomLoader {
     public static func loadRam(from romName: RomName) -> [Byte] {
-        guard let url = Bundle.module.url(forResource: romName.rawValue, withExtension: ".ch8")
-        else {
+        guard let url = url(from: romName) else {
             print("Rom not found: " + romName.rawValue)
             return []
         }
@@ -24,6 +23,10 @@ public struct RomLoader {
             print("Rom not found: " + url.absoluteString)
             return []
         }
+    }
+
+    private static func url(from romName: RomName) -> URL? {
+        return Bundle.module.url(forResource: romName.rawValue, withExtension: ".ch8")
     }
 
     public static func loadRam(from rom: [Byte]) -> [Byte] {
