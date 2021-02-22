@@ -37,8 +37,8 @@ public struct SemanticInputMappingService {
             .primaryAction : .eight
         ],
         .pong : [
-            .up : .four,
-            .down : .one
+            .up : .one,
+            .down : .four
         ],
         .rocket : [
             .primaryAction : .f
