@@ -17,11 +17,31 @@ public struct SemanticInputMappingService {
             .left : .four,
             .right : .six
         ],
+        .blinky : [
+            .up : .three,
+            .down : .six,
+            .left : .seven,
+            .right : .eight
+        ],
         .breakout : [
             .left : .four,
             .right : .six
         ],
+        .cave : [
+            .primaryAction : .f,
+            .up : .two,
+            .down : .eight,
+            .left : .four,
+            .right : .six
+        ],
         .filter : [
+            .left : .four,
+            .right : .six
+        ],
+        .kaleidoscope : [
+            .primaryAction : .f,
+            .up : .two,
+            .down : .eight,
             .left : .four,
             .right : .six
         ],
@@ -43,10 +63,41 @@ public struct SemanticInputMappingService {
         .rocket : [
             .primaryAction : .f
         ],
+        .spaceFlight : [
+            .primaryAction : .f,
+            .secondaryAction : .e,
+            .up : .one,
+            .down : .four
+        ],
+        .spaceIntercept : [
+            .primaryAction : .one,
+            .secondaryAction : .two,
+            .left : .four,
+            .up : .five,
+            .right : .six
+        ],
         .spaceInvaders : [
             .primaryAction : .five,
             .left : .four,
             .right : .six
+        ],
+        .squash : [
+            .up : .one,
+            .down : .four
+        ],
+        .tank : [
+            .primaryAction : .five,
+            .left : .four,
+            .right : .six,
+            .down : .two,
+            .up : .eight
+        ],
+        .tapeWorm : [
+            .primaryAction : .f,
+            .left : .four,
+            .right : .six,
+            .up : .two,
+            .down : .eight
         ],
         .tetris : [
             .secondaryAction : .seven,
@@ -55,6 +106,20 @@ public struct SemanticInputMappingService {
             .right : .six
         ],
         .wipeOff : [
+            .left : .four,
+            .right : .six
+        ],
+        .worm : [
+            .primaryAction : .five,
+            .left : .four,
+            .right : .six,
+            .up : .two,
+            .down : .eight
+        ],
+        .xMirror : [
+            .primaryAction : .f,
+            .up : .two,
+            .down : .eight,
             .left : .four,
             .right : .six
         ]
