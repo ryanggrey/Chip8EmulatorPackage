@@ -17,6 +17,13 @@ Not a lot of thought has went into this design which has so far been influenced 
 - [chip-8-watchOS](https://github.com/ryanggrey/chip-8-watchOS)
 - [chip-8-tvOS](https://github.com/ryanggrey/chip-8-tvOS)
 
+## Assets
+### ROMs
+The ROMs bundled into this project are from https://github.com/dmatlack/chip8
+
+### Sounds
+`beep.wav` file in Assets is from [Mixkit](https://mixkit.co), originally titled `mixkit-player-jumping-in-a-video-game-2043.wav`. See here for Mixkit [license](https://mixkit.co/license/#sfxFree).
+
 ## References
 I made heavy use of the following resources when working on this project:
 - Checking runtime correctness:
