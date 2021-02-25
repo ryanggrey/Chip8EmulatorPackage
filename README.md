@@ -8,7 +8,7 @@ This package implements the core functionality of a Chip-8 emulator in Swift. It
 The emulator package is designed to be driven by the consuming platform application. This means it is left to the consumer project to:
 1. Decide how and when to call the `chip8.cycle()` method. 
 2. Decide how to render the `pixels` to the platform's display.
-3. Detect user inputs and map them to [chip-8 keys](https://en.wikipedia.org/wiki/CHIP-8#Input) (`Chip8KeyCode`), including key down and up events.
+3. Detect user inputs and map them to [chip-8 keys](https://en.wikipedia.org/wiki/CHIP-8#Input) (`Chip8InputCode`), including key down and up events.
 
 Not a lot of thought has went into this design which has so far been influenced purely by reducing duplication between the consumer projects.
 
