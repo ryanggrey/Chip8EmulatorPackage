@@ -5,11 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "Chip8Emulator",
+    platforms: [
+        .watchOS(.v6)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Chip8Emulator",
-            targets: ["Chip8Emulator"]),
+            targets: ["Chip8Emulator"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.

@@ -30,8 +30,8 @@ public struct BeepPlayer {
 
         #else
 
-        // for some reason tvOS cannot find the url (returns nil) so must load NSDataAsset
-        // TODO: test on watchOS
+        // all other platforms function correctly with NSDataAsset
+        // but some do not function correctly loading the url (tvOS returns nil)
         let beepDataAsset = NSDataAsset(name: resourceName, bundle: Bundle.emulator)!
         let beepData = beepDataAsset.data
         avPlayer = try! AVAudioPlayer(data: beepData)
