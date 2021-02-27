@@ -5,12 +5,58 @@ A Chip-8 emulator Swift package. For use in macOS, iOS, watchOS and tvOS project
 This package implements the core functionality of a Chip-8 emulator in Swift. It contains no platform UI elements and this is left to a consumer projects to implement.
 
 ## Design
-The emulator package is designed to be driven by the consuming platform application. This means it is left to the consumer project to:
-1. Decide how and when to call the `chip8.cycle()` method. 
-2. Decide how to render the `pixels` to the platform's display.
-3. Detect user inputs and map them to [chip-8 keys](https://en.wikipedia.org/wiki/CHIP-8#Input) (`Chip8InputCode`), including key down and up events.
+The emulator package contains a `Chip8Engine` which drives the Chip-8 run loop. 
 
-Not a lot of thought has went into this design which has so far been influenced purely by reducing duplication between the consumer projects.
+The consumer can:
+### Start the engine
+`chip8Engine.start()`
+
+### Stop the engine
+`chip8Engine.stop()`
+
+### Feed inputs into the engine
+[chip-8 keys](https://en.wikipedia.org/wiki/CHIP-8#Input) (`Chip8InputCode`)
+- `chip8Engine.handleKeyDown(key: key)`
+- `chip8Engine.handleKeyUp(key: key)`
+
+### Receive callbacks from the engine
+The callbacks are handled through the delegate pattern. Set the delegate of the engine:
+
+```
+override func viewDidLoad() {
+  super.viewDidLoad()
+  chip8Engine.delegate = self
+}
+```
+
+#### Rendering
+The engine will call the delegate `render` method when the engine determines that a render of the pixels is necessary. 
+
+This will only be called when the pixels have changed. The engine assumes that pixels have been rendered on a call to the delegate and will not re-call with the same pixels.
+
+Implement the rendering method:
+
+```
+extension YourViewController: Chip8EngineDelegate {
+  func render(screen: Chip8Screen) {
+    // ...
+  }
+}
+```
+
+#### Beeping
+The engine will call the delegate `beep` method when the engine determines that a sound effect needs to be played.
+
+Implement the beep method using the provided `BeepPlayer` (or through a custom implementation):
+
+```
+extension YourViewController: Chip8EngineDelegate {
+  func beep() {
+    beepPlayer.play()
+    // haptics etc.
+  }
+}
+```
 
 ## Consumer Projects
 - [chip-8-macOS](https://github.com/ryanggrey/chip-8-macos)
