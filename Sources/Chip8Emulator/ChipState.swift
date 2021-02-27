@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct ChipState {
-    public init(
+struct ChipState {
+    init(
         // 4K memory
         ram: [Byte] = [Byte](repeating: 0, count: 4096),
         // 16 variables
@@ -37,26 +37,26 @@ public struct ChipState {
         self.needsRedraw = needsRedraw
     }
     
-    public var ram: [Byte]
-    public var v: [Byte]
-    public var i: Word
-    public var pc: Word
-    public var screen: Chip8Screen
-    public var delayTimer: TimeInterval
-    public var soundTimer: TimeInterval
-    public var stack = [Word]()
+    var ram: [Byte]
+    var v: [Byte]
+    var i: Word
+    var pc: Word
+    var screen: Chip8Screen
+    var delayTimer: TimeInterval
+    var soundTimer: TimeInterval
+    var stack = [Word]()
     // stack of currently pressed keys
     // last pressed key at top of stack
     // first pressed key on bottom of stak
-    public var downKeys: NSMutableOrderedSet
-    public var isAwaitingKey: Bool
-    public var needsRedraw: Bool
+    var downKeys: NSMutableOrderedSet
+    var isAwaitingKey: Bool
+    var needsRedraw: Bool
     
-    public var shouldPlaySound: Bool {
+    var shouldPlaySound: Bool {
         return soundTimer > 0
     }
     
-    public var currentOp: Word {
+    var currentOp: Word {
         let byte1 = ram[pc]
         let byte2 = ram[pc + 1]
         let nibble1 = byte1 >> 4 // shift everything right by 4 bits, prefixing with 0s

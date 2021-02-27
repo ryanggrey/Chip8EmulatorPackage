@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Disassembler {
+struct Disassembler {
     public func disassemble(codeBuffer: [Byte]) {
         let pcStart = 0x200
         var pc = pcStart
@@ -22,7 +22,7 @@ public struct Disassembler {
     }
 
     // TODO: update to match http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#3.0
-    public func disassemble(pc: Int, op: Word) {
+    func disassemble(pc: Int, op: Word) {
         let addressAndCodeStr = getAddressAndCodeStr(pc, op.byte1, op.byte2)
         var mnemonicStr = getMnemonicStr("NOOP")
         var opStr = getOpStr("")

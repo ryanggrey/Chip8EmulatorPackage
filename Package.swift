@@ -7,7 +7,7 @@ let package = Package(
     name: "Chip8Emulator",
     platforms: [
         // min supported OS versions
-        .macOS(.v10_10),
+        .macOS(.v10_12),
         .tvOS(.v13),
         .watchOS(.v6),
     ],

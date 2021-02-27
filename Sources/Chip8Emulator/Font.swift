@@ -8,7 +8,7 @@
 import Foundation
 
 struct Font {
-    public static var bytes: [Byte] {
+    static var bytes: [Byte] {
         return [
             // 0
             0b11110000,

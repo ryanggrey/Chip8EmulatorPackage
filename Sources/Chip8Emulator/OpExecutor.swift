@@ -32,7 +32,7 @@ struct OpExecutor {
         }
     }
 
-    public func handle(state: ChipState, op: Word) throws -> ChipState {        
+    func handle(state: ChipState, op: Word) throws -> ChipState {        
         var newState = state
 
         if state.isAwaitingKey && !isAwaitingKey(op: op) {

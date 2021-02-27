@@ -9,11 +9,11 @@ import Foundation
 
 struct NotImplemented: Error {}
 
-public class Chip8 {
+class Chip8: Chip8KeyHandler {
     private var state: ChipState
     private let opExecutor: OpExecutor
 
-    public init(
+    init(
         state: ChipState,
         cpuHz: TimeInterval
     ) {
@@ -21,7 +21,7 @@ public class Chip8 {
         self.opExecutor = OpExecutor(cpuHz: cpuHz)
     }
 
-    public var needsRedraw: Bool {
+    var needsRedraw: Bool {
         get {
             return state.needsRedraw
         }
@@ -30,23 +30,23 @@ public class Chip8 {
         }
     }
 
-    public var shouldPlaySound: Bool {
+    var shouldPlaySound: Bool {
         return state.shouldPlaySound
     }
 
-    public var screen: Chip8Screen {
+    var screen: Chip8Screen {
         return state.screen
     }
 
-    public func cycle() {
+    func cycle() {
         self.state = try! opExecutor.handle(state: self.state, op: state.currentOp)
     }
 
-    public func handleKeyDown(key: Int) {
-        state.downKeys.add(Byte(key))
+    func handleKeyDown(key: Chip8InputCode) {
+        state.downKeys.add(Byte(key.rawValue))
     }
 
-    public func handleKeyUp(key: Int) {
-        state.downKeys.remove(Byte(key))
+    func handleKeyUp(key: Chip8InputCode) {
+        state.downKeys.remove(Byte(key.rawValue))
     }
 }
