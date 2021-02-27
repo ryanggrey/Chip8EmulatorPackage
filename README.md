@@ -7,7 +7,6 @@ This package implements the core functionality of a Chip-8 emulator in Swift. It
 ## Design
 The emulator package contains a `Chip8Engine` which drives the Chip-8 run loop. 
 
-The consumer can:
 ### Start the engine
 `chip8Engine.start()`
 
