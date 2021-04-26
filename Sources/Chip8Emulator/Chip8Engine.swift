@@ -10,7 +10,7 @@ import Foundation
 public class Chip8Engine: Chip8KeyHandler {
     private var timer: Timer?
     private let cpuHz: TimeInterval = 1/600
-    private var chip8: Chip8!
+    private var chip8: Chip8?
     private let beepPlayer = BeepPlayer()
     public var delegate: Chip8EngineDelegate?
 
@@ -43,6 +43,8 @@ public class Chip8Engine: Chip8KeyHandler {
     }
 
     @objc private func timerFired() {
+        guard let chip8 = chip8 else { return }
+        
         chip8.cycle()
         guard let delegate = delegate else { return }
         if chip8.needsRedraw {
@@ -55,10 +57,14 @@ public class Chip8Engine: Chip8KeyHandler {
     }
 
     public func handleKeyDown(key: Chip8InputCode) {
+        guard let chip8 = chip8 else { return }
+
         chip8.handleKeyDown(key: key)
     }
 
     public func handleKeyUp(key: Chip8InputCode) {
+        guard let chip8 = chip8 else { return }
+
         chip8.handleKeyUp(key: key)
     }
 }
