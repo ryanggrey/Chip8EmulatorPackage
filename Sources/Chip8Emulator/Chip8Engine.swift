@@ -27,6 +27,20 @@ public class Chip8Engine: Chip8KeyHandler {
             state: chipState,
             cpuHz: cpuHz
         )
+        
+        resume()
+    }
+    
+    private var isRunning: Bool {
+        return timer != nil
+    }
+    
+    private var isLoaded: Bool {
+        return chip8 != nil
+    }
+    
+    public func resume() {
+        guard !isRunning && isLoaded else { return }
 
         timer = Timer.scheduledTimer(
             timeInterval: cpuHz,
