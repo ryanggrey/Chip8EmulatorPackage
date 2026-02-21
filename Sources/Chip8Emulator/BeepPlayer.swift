@@ -1,10 +1,11 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Ryan Grey on 24/02/2021.
 //
 
+#if canImport(AVFoundation)
 import Foundation
 import AVFoundation
 
@@ -31,3 +32,4 @@ public struct BeepPlayer {
         }
     }
 }
+#endif

@@ -21,7 +21,7 @@ struct ChipState {
         soundTimer: TimeInterval = 0,
         // 12 or 16 sized stack in real Chip-8, but allow this to grow dynamically
         stack: [Word] = [Word](),
-        downKeys: NSMutableOrderedSet = NSMutableOrderedSet(),
+        downKeys: [Byte] = [],
         isAwaitingKey: Bool = false,
         needsRedraw: Bool = false) {
         self.ram = ram
@@ -48,7 +48,7 @@ struct ChipState {
     // stack of currently pressed keys
     // last pressed key at top of stack
     // first pressed key on bottom of stak
-    var downKeys: NSMutableOrderedSet
+    var downKeys: [Byte]
     var isAwaitingKey: Bool
     var needsRedraw: Bool
     

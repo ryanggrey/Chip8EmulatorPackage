@@ -16,6 +16,7 @@ import AppKit
 #endif
 
 public struct RomLoader {
+    #if canImport(AppKit) || canImport(UIKit)
     public static func loadRam(from romName: RomName) -> [Byte] {
         guard let romData = NSDataAsset(name: romName.rawValue, bundle: Bundle.emulator)?.data else {
             print("Rom not found: " + romName.rawValue)
@@ -43,8 +44,9 @@ public struct RomLoader {
             return []
         }
     }
+    #endif
 
-    private static func loadRam(from rom: [Byte]) -> [Byte] {
+    public static func loadRam(from rom: [Byte]) -> [Byte] {
         var ram = [Byte](repeating: 0, count: 4096)
 
         let font = Font.bytes

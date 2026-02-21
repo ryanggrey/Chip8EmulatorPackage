@@ -43,10 +43,13 @@ class Chip8: Chip8KeyHandler {
     }
 
     func handleKeyDown(key: Chip8InputCode) {
-        state.downKeys.add(Byte(key.rawValue))
+        let byte = Byte(key.rawValue)
+        if !state.downKeys.contains(byte) {
+            state.downKeys.append(byte)
+        }
     }
 
     func handleKeyUp(key: Chip8InputCode) {
-        state.downKeys.remove(Byte(key.rawValue))
+        state.downKeys.removeAll(where: { $0 == Byte(key.rawValue) })
     }
 }

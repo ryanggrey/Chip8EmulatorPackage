@@ -5,6 +5,7 @@
 //  Created by Ryan Grey on 12/02/2021.
 //
 
+#if canImport(CoreGraphics)
 import Foundation
 import CoreGraphics
 
@@ -59,3 +60,4 @@ extension CGFloat {
         return final
     }
 }
+#endif
