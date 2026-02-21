@@ -1,3 +1,4 @@
+#if canImport(AppKit) || canImport(UIKit)
 import class Foundation.Bundle
 
 extension Foundation.Bundle {
@@ -5,3 +6,4 @@ extension Foundation.Bundle {
         return Bundle.module
     }
 }
+#endif

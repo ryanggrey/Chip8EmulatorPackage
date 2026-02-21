@@ -1125,7 +1125,7 @@ class OpExecutorTests: XCTestCase {
         var state = ChipState()
         state.pc = initialPc
         state.v = v
-        state.downKeys.add(triggerKey)
+        state.downKeys.append(Byte(triggerKey))
 
         let newState = try! opExecutor.handle(state: state, op: op)
         let observedPc = newState.pc
@@ -1180,7 +1180,7 @@ class OpExecutorTests: XCTestCase {
         var state = ChipState()
         state.pc = initialPc
         state.v = v
-        state.downKeys.add(triggerKey)
+        state.downKeys.append(Byte(triggerKey))
 
         let newState = try! opExecutor.handle(state: state, op: op)
         let observedPc = newState.pc
@@ -1213,10 +1213,9 @@ class OpExecutorTests: XCTestCase {
     func test_WAITKEY_0x0f_awaits() {
         let x: Byte = 0x02
         let op = Word(nibbles: [0x0f, x, 0x00, 0x0a])
-        let downKeys = NSMutableOrderedSet()
 
         var state = ChipState()
-        state.downKeys = downKeys
+        state.downKeys = []
 
         let newState = try! opExecutor.handle(state: state, op: op)
         let observedAwaiting = newState.isAwaitingKey
@@ -1226,11 +1225,10 @@ class OpExecutorTests: XCTestCase {
     func test_WAITKEY_0x0f_awaits_without_incrementing_pc() {
         let x: Byte = 0x02
         let op = Word(nibbles: [0x0f, x, 0x00, 0x0a])
-        let downKeys = NSMutableOrderedSet()
         let initialPc: Word = 0x88a
 
         var state = ChipState()
-        state.downKeys = downKeys
+        state.downKeys = []
         state.pc = initialPc
 
         let newState = try! opExecutor.handle(state: state, op: op)
@@ -1242,13 +1240,11 @@ class OpExecutorTests: XCTestCase {
     func test_WAITKEY_0x0f_resets_isAwaiting_when_awaited_key_pressed() {
         let x: Byte = 0x02
         let op = Word(nibbles: [0x0f, x, 0x00, 0x0a])
-        let downKeys = NSMutableOrderedSet()
         let awaitedKey: Byte = 1
-        downKeys.add(awaitedKey)
         let initialIsAwaiting = true
 
         var state = ChipState()
-        state.downKeys = downKeys
+        state.downKeys = [awaitedKey]
         state.isAwaitingKey = initialIsAwaiting
 
         let newState = try! opExecutor.handle(state: state, op: op)
@@ -1261,14 +1257,12 @@ class OpExecutorTests: XCTestCase {
         let op = Word(nibbles: [0x0f, x, 0x00, 0x0a])
         var v = createEmptyRegisters()
         v[x] = 1
-        let downKeys = NSMutableOrderedSet()
         let awaitedKey: Byte = 5
-        downKeys.add(awaitedKey)
         let initialIsAwaiting = true
 
         var state = ChipState()
         state.v = v
-        state.downKeys = downKeys
+        state.downKeys = [awaitedKey]
         state.isAwaitingKey = initialIsAwaiting
 
         let newState = try! opExecutor.handle(state: state, op: op)
@@ -1280,13 +1274,11 @@ class OpExecutorTests: XCTestCase {
     func test_WAITKEY_0x0f_increments_pc_when_awaited_key_pressed() {
         let x: Byte = 0x02
         let op = Word(nibbles: [0x0f, x, 0x00, 0x0a])
-        let downKeys = NSMutableOrderedSet()
         let awaitedKey: Byte = 5
-        downKeys.add(awaitedKey)
         let initialPc: Word = 0x88a
 
         var state = ChipState()
-        state.downKeys = downKeys
+        state.downKeys = [awaitedKey]
         state.pc = initialPc
         state.isAwaitingKey = true
 
