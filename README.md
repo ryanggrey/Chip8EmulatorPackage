@@ -61,6 +61,8 @@ extension YourViewController: Chip8EngineDelegate {
 - [chip-8-macOS](https://github.com/ryanggrey/chip-8-macos)
 - [chip-8-watchOS](https://github.com/ryanggrey/chip-8-watchOS)
 - [chip-8-tvOS](https://github.com/ryanggrey/chip-8-tvOS)
+- [CHIP8AR](https://github.com/ryanggrey/CHIP8AR) (iOS, AR)
+- [chip-8-web](https://github.com/ryanggrey/chip-8-web) (Web, SwiftWasm)
 
 ## Assets
 ### ROMs
